@@ -31,3 +31,4 @@ build/
 .vscode/
 
 db-data-vol/
+.DS_Store
