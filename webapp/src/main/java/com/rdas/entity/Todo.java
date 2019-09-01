@@ -10,11 +10,15 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Entity(name = "todos")
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Todo {
     @Id
