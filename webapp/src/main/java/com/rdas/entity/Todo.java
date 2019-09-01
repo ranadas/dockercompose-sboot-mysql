@@ -30,5 +30,5 @@ public class Todo {
     private boolean completed;
 
     @Column(name = "updatedDate", nullable = false)
-    private Date updatedDate = new Date();    
+    private Date updatedDate = new Date();
 }

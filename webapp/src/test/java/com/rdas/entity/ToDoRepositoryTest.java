@@ -48,8 +48,7 @@ public class ToDoRepositoryTest {
         
     }
 
-
-    
+    @Test
     public void deletByEmployeeIdTest() {
         Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();    
         todo = todoRepository.save(todo);
