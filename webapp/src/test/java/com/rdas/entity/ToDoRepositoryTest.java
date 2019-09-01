@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.sql.DataSource;
 
 import lombok.extern.log4j.Log4j2;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 //mvn clean test -Dspring.profiles.active=test -Dtest=ToDoRepositoryTest
 
+@Ignore
 @Log4j2
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
