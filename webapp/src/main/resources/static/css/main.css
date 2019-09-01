@@ -1,4 +1,4 @@
-.hello-title{
+/* .hello-title{
     color: darkgreen;
 }
 
@@ -60,3 +60,6 @@ h3 {
     padding: 15px;
     clear:both;
 }  
+
+*/
+[v-cloak] { display: none; } 
