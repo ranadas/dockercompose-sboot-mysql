@@ -1,3 +1,51 @@
 spring:
+  profiles:
+    active: "dev"
   application:
     name: WOOOOOOOO-HOOOOOOOOOO web
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates
+  jpa:
+    hibernate:
+      ddl-auto: create        
+      database-platform:  org.hibernate.dialect.MySQL55Dialect
+      generate-ddl: true
+      show-sql: true
+
+---
+spring:
+  profiles: sbdocker
+  # datasource:
+  #   url:  jdbc:mysql://192.168.0.143:3306/test?useSSL=false&protocol=TCP&serverTimezone=UTC&useLegacyDatetimeCode=false
+  #   driver-class-name:  com.mysql.cj.jdbc.Driver
+  #   username: azuser
+  #   password: password321
+server:
+  port: 8088
+
+ 
+---
+spring:
+  profiles: dev
+  datasource:
+      url:  jdbc:mysql://192.168.0.143:3306/test?useSSL=false&protocol=TCP&serverTimezone=UTC&useLegacyDatetimeCode=false
+      driver-class-name:  com.mysql.cj.jdbc.Driver
+      username: azuser
+      password: password321    
+
+server:
+  port: 8081
+
+---
+---
+spring:
+  profiles: test
+  datasource:
+      url:  jdbc:h2:mem:testtododb
+      driver-class-name:  org.h2.Driver
+      username: sa
+      password: 
+
+server:
+  port: 8081
