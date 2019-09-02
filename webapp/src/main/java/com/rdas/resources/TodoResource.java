@@ -1,9 +1,11 @@
-package com.rdas.entity;
+package com.rdas.resources;
 
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.rdas.entity.Todo;
+import com.rdas.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

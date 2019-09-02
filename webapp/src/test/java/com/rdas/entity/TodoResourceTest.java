@@ -1,6 +1,8 @@
 package com.rdas.entity;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.rdas.resources.TodoResource;
+import com.rdas.services.TodoService;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;

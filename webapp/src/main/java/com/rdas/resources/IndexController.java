@@ -1,4 +1,4 @@
-package com.rdas;
+package com.rdas.resources;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

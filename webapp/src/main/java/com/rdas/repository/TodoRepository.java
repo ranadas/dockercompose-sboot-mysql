@@ -1,5 +1,6 @@
-package com.rdas.entity;
+package com.rdas.repository;
 
+import com.rdas.entity.Todo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

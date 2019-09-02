@@ -1,5 +1,7 @@
-package com.rdas.entity;
+package com.rdas.services;
 
+import com.rdas.entity.Todo;
+import com.rdas.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
