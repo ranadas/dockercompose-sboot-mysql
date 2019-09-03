@@ -27,17 +27,18 @@ public class TodoResource {
         this.todoService = todoService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Todo>> findAll() {
+        var test = "rana";
         return ResponseEntity.ok(todoService.findAll());
     }
 
-    @PostMapping
+    @PostMapping("/one")
     public ResponseEntity<?> save(@Valid @RequestBody Todo todo) {
         log.info(todo.toString());
         return ResponseEntity.ok(todoService.save(todo));
     }
-//    @PostMapping
+//    @PostMapping("/all")
     public ResponseEntity<?> saveAll(@Valid @RequestBody List<Todo> todos) {
         log.info(todos.toString());
         return ResponseEntity.ok(todoService.saveAll(todos));
