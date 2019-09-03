@@ -1,14 +1,18 @@
-package com.rdas.entity;
+package com.rdas.services;
 
+import com.rdas.entity.Todo;
 import com.rdas.repository.TodoRepository;
 import com.rdas.services.TodoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -63,5 +67,37 @@ public class TodoServiceTest {
 
         Todo found = todoService.getByTitle("Add JaCoco to Codebase");
         assertThat(found.getTitle()).isEqualTo(todo.getTitle());
+    }
+
+    @Spy
+    private List<Todo> parts = new ArrayList<>();
+    @Test
+    public void service_save_All() {
+        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(new Date()).build();
+        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(new Date()).build();
+        parts.add(task1);
+        parts.add(task2);
+
+        when(todoRepository.saveAll(parts)).thenReturn(parts);
+
+        List<Todo> todos = todoService.saveAll(parts);
+        assertThat(todos.size()).isEqualTo(2);
+
+    }
+    @Test
+    public void service_save_retrieveAll() {
+        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(new Date()).build();
+//        when(todoRepository.save(task1)).thenReturn(task1);
+        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(new Date()).build();
+//        when(todoRepository.save(task2)).thenReturn(task2);
+        parts.add(task1);
+        parts.add(task2);
+        when(todoRepository.saveAll(parts)).thenReturn(parts);
+        List<Todo> todos = todoService.saveAll(parts);
+
+        when(todoRepository.findAll()).thenReturn(parts);
+
+        List<Todo> foundAll = todoService.findAll();
+        assertThat(foundAll.size()).isEqualTo(2);
     }
 }

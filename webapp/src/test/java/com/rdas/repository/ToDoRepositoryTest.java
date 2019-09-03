@@ -1,24 +1,20 @@
-package com.rdas.entity;
+package com.rdas.repository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.Date;
-import javax.sql.DataSource;
-
-import com.rdas.repository.TodoRepository;
+import com.rdas.entity.Todo;
 import lombok.extern.log4j.Log4j2;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.sql.DataSource;
+import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 //mvn clean test -Dspring.profiles.active=test -Dtest=ToDoRepositoryTest
 

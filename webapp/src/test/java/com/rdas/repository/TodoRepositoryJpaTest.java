@@ -1,6 +1,6 @@
-package com.rdas.entity;
+package com.rdas.repository;
 
-import com.rdas.repository.TodoRepository;
+import com.rdas.entity.Todo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
