@@ -33,6 +33,11 @@ public class TodoResource {
     }
 
     @PostMapping
+    public ResponseEntity<?> save(@Valid @RequestBody Todo todo) {
+        log.info(todo.toString());
+        return ResponseEntity.ok(todoService.save(todo));
+    }
+//    @PostMapping
     public ResponseEntity<?> saveAll(@Valid @RequestBody List<Todo> todos) {
         log.info(todos.toString());
         return ResponseEntity.ok(todoService.saveAll(todos));
