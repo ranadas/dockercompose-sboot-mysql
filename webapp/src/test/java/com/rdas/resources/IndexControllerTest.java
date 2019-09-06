@@ -1,6 +1,5 @@
 package com.rdas.resources;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,29 +15,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(IndexController.class)
-//@Import(SomeConfig.class)
 public class IndexControllerTest {
     @Autowired
     private MockMvc mockMvc;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Test
     public void test_homepage_returns_ok() throws Exception {
         mockMvc.perform(get("/")
                         .accept(MediaType.APPLICATION_JSON)
-                //.with(httpBasic(username, password))
         )
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("text/html;charset=UTF-8"))
-//                .andExpect(jsonPath("$.user_id", CoreMatchers.is(userId)))
-//                .andExpect(jsonPath("$.name", CoreMatchers.is(name)))
-//                .andExpect(jsonPath("$.username", CoreMatchers.is(username)))
         ;
     }
+
     @Test
-    public void test_homepage_returns_index() throws Exception {
+    public void test_homepage_returns_index_view() throws Exception {
         mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(view().name("index"));
