@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
@@ -25,7 +26,7 @@ public class TodoRepositoryJpaTest {
     @Test
     public void whenFindByTitle_thenReturnTodo() {
         // given
-        Todo alex = Todo.builder().title("Add Alex").completed(false).updatedDate(new Date()).build();
+        Todo alex = Todo.builder().title("Add Alex").completed(false).updatedDate(LocalDate.now()).build();
         entityManager.persist(alex);
         entityManager.flush();
 
