@@ -23,6 +23,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+//https://howtodoinjava.com/spring-boot2/spring-boot-mockmvc-example/
+//https://www.freecodecamp.org/news/unit-testing-services-endpoints-and-repositories-in-spring-boot-4b7d9dc2b772/
+//https://springbootdev.com/2018/02/22/spring-boot-test-writing-unit-tests-for-the-controller-layers-with-webmvctest/#more-4536
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @WebMvcTest(TodoResource.class)
@@ -30,8 +33,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class TodoControllerTest {
     @Autowired
     private MockMvc mockMvc;
-
-    //@Qualifier("timesObjectMapper")
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -46,7 +47,6 @@ public class TodoControllerTest {
     @Test
     public void all_returns_ok_empty_list() throws Exception {
         mockMvc.perform(get("/api/todos/all")
-                //.accept(MediaType.APPLICATION_JSON)
         )
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -70,14 +70,9 @@ public class TodoControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-//                .andExpect(jsonPath("$.fieldErrors", hasSize(2)))
-//                .andExpect(jsonPath("$.fieldErrors[*].path", containsInAnyOrder("title", "description")))
-//                .andExpect(jsonPath("$.fieldErrors[*].message", containsInAnyOrder(
-//                        "The maximum length of the description is 500 characters.",
-//                        "The maximum length of the title is 100 characters."
-//                )))
         ;
     }
+
     @Test
     public void save_all_todo_returns_ok() throws Exception {
         Todo todo = Todo.builder()
@@ -88,8 +83,8 @@ public class TodoControllerTest {
         var todos = new ArrayList<>();
         todos.add(todo);
         mockMvc.perform(post("/api/todos/saveall")
-                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-                        .content(objectMapper.writeValueAsString(todos))
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(objectMapper.writeValueAsString(todos))
         )
                 .andDo(print())
                 .andExpect(status().isOk())
