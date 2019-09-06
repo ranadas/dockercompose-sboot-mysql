@@ -11,7 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
-import java.util.Date;
+import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -44,7 +44,7 @@ public class ToDoRepositoryTest {
 
     @Test
     public void testSaveToDoReturnsValueExpected() {
-        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();
+        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(LocalDate.now()).build();
 
         todoRepository.save(todo);
 
@@ -54,7 +54,7 @@ public class ToDoRepositoryTest {
 
     @Test
     public void deleteByIdTest() {
-        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();
+        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(LocalDate.now()).build();
         todo = todoRepository.save(todo);
 
         todoRepository.deleteById(todo.getId());

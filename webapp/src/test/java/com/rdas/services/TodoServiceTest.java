@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,7 +35,7 @@ public class TodoServiceTest {
 
     @Test
     public void service_save() {
-        Todo todo = Todo.builder().id(1L).title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();
+        Todo todo = Todo.builder().id(1L).title("Add JaCoco to Codebase").completed(false).updatedDate(LocalDate.now()).build();
         when(todoRepository.save(todo)).thenReturn(todo);
 
         Todo saved = todoService.save(todo);
@@ -43,7 +44,7 @@ public class TodoServiceTest {
 
     @Test
     public void service_save_retrieveById() {
-        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();
+        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(LocalDate.now()).build();
         when(todoRepository.save(todo)).thenReturn(todo);
         when(todoRepository.findById(1L)).thenReturn(Optional.of(todo));
 
@@ -58,7 +59,7 @@ public class TodoServiceTest {
 
     @Test
     public void service_save_retrieveByTitle() {
-        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(new Date()).build();
+        Todo todo = Todo.builder().title("Add JaCoco to Codebase").completed(false).updatedDate(LocalDate.now()).build();
         when(todoRepository.save(todo)).thenReturn(todo);
         when(todoRepository.findByTitle("Add JaCoco to Codebase")).thenReturn(todo);
 
@@ -73,8 +74,8 @@ public class TodoServiceTest {
     private List<Todo> parts = new ArrayList<>();
     @Test
     public void service_save_All() {
-        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(new Date()).build();
-        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(new Date()).build();
+        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(LocalDate.now()).build();
+        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(LocalDate.now()).build();
         parts.add(task1);
         parts.add(task2);
 
@@ -86,9 +87,9 @@ public class TodoServiceTest {
     }
     @Test
     public void service_save_retrieveAll() {
-        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(new Date()).build();
+        Todo task1 = Todo.builder().id(1L).title("Go to Doctor").completed(false).updatedDate(LocalDate.now()).build();
 //        when(todoRepository.save(task1)).thenReturn(task1);
-        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(new Date()).build();
+        Todo task2 = Todo.builder().id(2L).title("Pay Taxes").completed(false).updatedDate(LocalDate.now()).build();
 //        when(todoRepository.save(task2)).thenReturn(task2);
         parts.add(task1);
         parts.add(task2);

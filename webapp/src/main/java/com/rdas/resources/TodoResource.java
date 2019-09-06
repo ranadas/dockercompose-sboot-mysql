@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 
+/*
+/todos
+/todos/{id}
+/todos/{id}/report
+https://howtodoinjava.com/spring-boot2/rest-with-spring-hateoas-example/
+ */
 @RestController
 @RequestMapping("/api/todos")
 @Slf4j
@@ -27,14 +33,22 @@ public class TodoResource {
         this.todoService = todoService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Todo>> findAll() {
-        return ResponseEntity.ok(todoService.findAll());
+        var allTodos = todoService.findAll();
+        return ResponseEntity.ok(allTodos);
     }
 
-    @PostMapping
+    @PostMapping("/create")
+    public ResponseEntity<Todo> save(@RequestBody Todo todo) {
+        log.info("Saving {}", todo.toString());
+        var savedTodo = todoService.save(todo);
+        return ResponseEntity.ok(savedTodo);
+    }
+    @PostMapping("/saveall")
     public ResponseEntity<?> saveAll(@Valid @RequestBody List<Todo> todos) {
         log.info(todos.toString());
-        return ResponseEntity.ok(todoService.saveAll(todos));
+        var todosCreated = todoService.saveAll(todos);
+        return ResponseEntity.ok(todosCreated);
     }
 }
